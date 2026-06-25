@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <RootNamespace>TiendaElectrodomesticos</RootNamespace>
+    <AssemblyName>TiendaElectrodomesticos</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Driver de conexión a MySQL. Si usás SQL Server, reemplazar por:
+         <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+    -->
+    <PackageReference Include="MySql.Data" Version="9.7.0" />
+    <PackageReference Include="MySqlConnector" Version="2.3.7" />
+  </ItemGroup>
+
+</Project>
