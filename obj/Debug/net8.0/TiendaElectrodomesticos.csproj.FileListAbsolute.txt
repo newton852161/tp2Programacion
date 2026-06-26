@@ -37,3 +37,4 @@ C:\Users\David\OneDrive\Desktop\TP2TEORIA\obj\Debug\net8.0\refint\TiendaElectrod
 C:\Users\David\OneDrive\Desktop\TP2TEORIA\obj\Debug\net8.0\TiendaElectrodomesticos.pdb
 C:\Users\David\OneDrive\Desktop\TP2TEORIA\obj\Debug\net8.0\TiendaElectrodomesticos.genruntimeconfig.cache
 C:\Users\David\OneDrive\Desktop\TP2TEORIA\obj\Debug\net8.0\ref\TiendaElectrodomesticos.dll
+C:\Users\David\OneDrive\Desktop\TP2TEORIA\obj\Debug\net8.0\TiendaElectrodomesticos.sourcelink.json

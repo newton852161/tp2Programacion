@@ -19,7 +19,9 @@ namespace TiendaElectrodomesticos
                 Console.WriteLine("2 - Listar productos");
                 Console.WriteLine("3 - Registrar venta");
                 Console.WriteLine("4 - Salir");
+                Console.WriteLine("5 - Eliminar producto");
                 Console.Write("Seleccione una opción: ");
+                
 
                 opcion = int.Parse(Console.ReadLine());
 
@@ -144,9 +146,27 @@ namespace TiendaElectrodomesticos
     Console.WriteLine("Venta registrada correctamente.");
     break;
 }
+            case 5:
+        {
+    ProductoDAO dao = new ProductoDAO();
+    var productos = dao.ObtenerProductos();
+
+    Console.WriteLine("\n--- PRODUCTOS DISPONIBLES ---");
+    foreach (var p in productos)
+        Console.WriteLine($"Código: {p.Codigo} | {p.Nombre}");
+
+    Console.Write("\nIngrese el código del producto a eliminar: ");
+    int codigo = int.Parse(Console.ReadLine());
+
+    bool eliminado = dao.EliminarProducto(codigo);
+    if (eliminado)
+    Console.WriteLine("Producto eliminado correctamente.");
+    break;
+}
                     case 4:
                         Console.WriteLine("Hasta luego.");
                         break;
+                    
 
                     default:
                         Console.WriteLine("Opción inválida.");

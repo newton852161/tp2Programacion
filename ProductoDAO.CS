@@ -71,21 +71,28 @@ namespace TiendaElectrodomesticos
             }
         }
 
-        public void EliminarProducto(int codigoProducto)
+       public bool EliminarProducto(int codigoProducto)
+{
+    try
+    {
+        using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
         {
-            using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
+            string sql = "DELETE FROM Producto WHERE Codigo=@Codigo";
+
+            using (MySqlCommand cmd = new MySqlCommand(sql, conexion))
             {
-                string sql =
-                    "DELETE FROM Producto WHERE Codigo=@Codigo";
-
-                using (MySqlCommand cmd = new MySqlCommand(sql, conexion))
-                {
-                    cmd.Parameters.AddWithValue("@Codigo", codigoProducto);
-
-                    cmd.ExecuteNonQuery();
-                }
+                cmd.Parameters.AddWithValue("@Codigo", codigoProducto);
+                cmd.ExecuteNonQuery();
             }
         }
+        return true; // ← salió bien
+    }
+    catch (MySqlException)
+    {
+        Console.WriteLine("No se puede eliminar: el producto tiene ventas registradas.");
+        return false; // ← hubo error
+    }
+}
         public List<Producto> ObtenerProductos()
 {
     List<Producto> lista = new List<Producto>();
