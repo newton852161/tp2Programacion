@@ -20,6 +20,7 @@ namespace TiendaElectrodomesticos
                 Console.WriteLine("3 - Registrar venta");
                 Console.WriteLine("4 - Salir");
                 Console.WriteLine("5 - Eliminar producto");
+                Console.WriteLine("6 - Modificar producto");
                 Console.Write("Seleccione una opción: ");
                 
 
@@ -163,6 +164,33 @@ namespace TiendaElectrodomesticos
     Console.WriteLine("Producto eliminado correctamente.");
     break;
 }
+case 6:
+{
+    ProductoDAO dao = new ProductoDAO();
+    var productos = dao.ObtenerProductos();
+
+    Console.WriteLine("\n--- PRODUCTOS DISPONIBLES ---");
+    foreach (var p in productos)
+        Console.WriteLine($"Código: {p.Codigo} | {p.Nombre} | Precio: {p.Precio} | Stock: {p.Stock}");
+
+    Console.Write("\nIngrese el código del producto a modificar: ");
+    int codigo = int.Parse(Console.ReadLine());
+
+    Console.Write("Nuevo nombre: ");
+    string nuevoNombre = Console.ReadLine();
+
+    Console.Write("Nuevo precio: ");
+    decimal nuevoPrecio = decimal.Parse(Console.ReadLine());
+
+    Console.Write("Nuevo stock: ");
+    int nuevoStock = int.Parse(Console.ReadLine());
+
+    bool modificado = dao.ModificarProducto(codigo, nuevoNombre, nuevoPrecio, nuevoStock);
+    if (modificado)
+        Console.WriteLine("Producto actualizado.");
+
+    break;
+}
                     case 4:
                         Console.WriteLine("Hasta luego.");
                         break;
@@ -172,6 +200,7 @@ namespace TiendaElectrodomesticos
                         Console.WriteLine("Opción inválida.");
                         break;
                 }
+                
 
             } while (opcion != 4);
         }
